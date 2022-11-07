@@ -1,1 +1,13 @@
-<p>quiz-browser works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let quiz of quizzes">
+      <a href="#" class="card">
+        <div class="card-body">
+          <h3 class="card-title">{{quiz.name}}</h3>
+          <hr>
+          {{quiz.description}}
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
