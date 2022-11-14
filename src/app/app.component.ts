@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'RealPaperQuiz';
+
+  funkyFunc(str: string){
+    console.log('xd');
+    return str==this.title;
+  }
 }

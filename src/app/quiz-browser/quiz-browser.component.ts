@@ -1,25 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { Quiz } from '../quiz.model';
+import {Question} from "../question.model";
 @Component({
   selector: 'app-quiz-browser',
   templateUrl: './quiz-browser.component.html',
   styleUrls: ['./quiz-browser.component.scss']
 })
 export class QuizBrowserComponent implements OnInit {
+  questionSets: Question[]=[
+    new Question(
+      "Which country's capital is Riga?",
+      "a",
+      ["Estonia, Poland, France, Bulgaria"]
+    ),
+    new Question(
+      "Who died in 1444 in the battle of Varna?",
+      "c",
+      ["Sultan Mahiid II", "King Louis XVII", "King Władysław III", "Emperor Zhu Qiyu"]
+    )
+  ]
   quizzes: Quiz[] = [
     new Quiz(
       'Countries of Europe',
-      'Geography',
-      'Quiz about countries in Europe',
       'Arek',
-      './quizzes'
+      [this.questionSets[0]]
     ),
     new Quiz(
-      'Anatomy of economy',
-      'Economy',
-      'Test your knowledge of various economic terms',
-      'Arek',
-      './quizzes'
+      'History vol. 3',
+      'Bartek',
+      [this.questionSets[1]]
     )
   ];
   constructor() { }

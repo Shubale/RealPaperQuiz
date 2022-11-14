@@ -1,9 +1,10 @@
 <div class="jumbotron jumbotron-fluid text-center" style="background-color: blanchedalmond;">
   <div class="container">
     <h1 class="display-1 font-weight-bold"> Paper Quiz!</h1>
-    <p class="lead font-weight-bold">We shall test your knowledge...</p>
+    <p appBasicHighlight class="lead font-weight-bold">We shall test your knowledge...</p>
+    <p appBetterHighlight [defaultColor] = "'yellow'">We shall test your knowledge...</p>
+
   </div>
 </div>
-<app-home-screen></app-home-screen>
 <div class="col-md-2 float-right"><app-nav-bar></app-nav-bar></div>
-<app-quiz-browser></app-quiz-browser>
+<router-outlet></router-outlet>

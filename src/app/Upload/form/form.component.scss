@@ -1,0 +1,46 @@
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.btn {
+  //margin-left: 5px;
+}
+
+.rounded {
+  color: white;
+}
+
+
+.delete-question {
+  border: 2px solid red;
+  background-color: #f72d2d;
+  color: white;
+}
+
+.delete-at-pos {
+  font-size: 2vw;
+  border: 2px solid red;
+  background-color: #f72d2d;
+  color: white;
+}
+
+.add-question {
+  font-size: 2vw;
+  border: 2px solid green;
+  background-color: #04b012;
+  color: white;
+}
+
+hr {
+  border-width: 2px;
+  border-color: gray;
+}
+
+.questionAdder {
+  border: 1px solid lightslategray;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+
