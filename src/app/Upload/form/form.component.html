@@ -1,1 +1,97 @@
-<p>form works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <form (ngSubmit)="onSubmit()" [formGroup]="quizForm">
+        <div class="form-group">
+          <label for="title">Quiz name</label>
+          <input
+            class="form-control"
+            formControlName="title"
+            id="title"
+            type="text">
+          <span
+            *ngIf="!quizForm.get('title').valid && quizForm.get('title').touched"
+          >Please enter a valid quiz title</span>
+        </div>
+        <div class="form-group">
+          <label for="author">Author</label>
+          <input
+            class="form-control"
+            formControlName="author"
+            id="author"
+            type="text">
+          <span
+            *ngIf="!quizForm.get('author').valid && quizForm.get('author').touched"
+          >Please enter a valid author name</span>
+        </div>
+        <h4>Questions</h4>
+
+    //lista z service
+          <div *ngFor="let questionControl of quizForm.get('questions')['controls'];
+          let i = index"
+               class="container">
+            <div class="row">
+            <div class="questionAdder questionAdder col-11 mr-1">
+
+              <div formArrayName="questions">
+
+                <div class="form-group">
+
+                  <input [formControlName]="i" class="form-control" placeholder="Question" type="text">
+
+                  <select class="custom-select">
+                    <option selected>Choose correct answer</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                  </select>
+                  Answers
+                  <!--PYTANIA-->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">A)</span>
+                    </div>
+                    <input [formControlName]="i" class="form-control" type="text">
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">B)</span>
+                    </div>
+                    <input [formControlName]="i" class="form-control" type="text">
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">C)</span>
+                    </div>
+                    <input [formControlName]="i" class="form-control" type="text">
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">D)</span>
+                    </div>
+                    <input [formControlName]="i" class="form-control" type="text">
+                  </div>
+                  <!--PYTANIA-->
+
+                </div>
+
+              </div>
+
+
+            </div>
+            <div class="col">
+              <div class="row mb-1">
+                <div (click)="onAddQuiz()" class="btn add-question rounded col-12 square" type="button">+</div>
+              </div>
+              <div class="row">
+                <div (click)="onDeleteQuestionAtPos(i)" class="btn btn-info delete-at-pos col-12">X</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
