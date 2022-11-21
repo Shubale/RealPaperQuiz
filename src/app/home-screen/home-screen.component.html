@@ -1,1 +1,18 @@
-<p>home-screen works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <pre>
+        {{quizService.actualQuiz.name}}
+      </pre>
+      <pre>
+        {{quizService.actualQuiz.author}}
+      </pre>
+      <pre *ngFor = "let question of quizService.actualQuiz.questions">
+        {{question.question}}
+        <pre *ngFor = "let answer of question.answers">
+          {{answer}}
+        </pre>
+      </pre>
+    </div>
+  </div>
+</div>
