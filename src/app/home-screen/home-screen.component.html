@@ -1,24 +1,20 @@
 <div class="container">
-  <div class="score">
-    {{correctAnswers/quizService.actualQuiz.questions.length*100}}%
+  <div class="row">
+    <div class="score col-2">
+      Score: {{correctAnswers/quizService.actualQuiz.questions.length*100}}%
+    </div>
   </div>
+
   <div class="row">
     <div class="col-12 quiz-container">
-      <span class="quiz-name">
-        {{quizService.actualQuiz.title}}
-      </span>
-      <hr>
-      <span>
-        {{quizService.actualQuiz.author}}
-      </span>
-      <hr>
+      <div class="quiz-name">
+        {{quizService.actualQuiz.title}} by {{quizService.actualQuiz.author}}
+      </div>
       <div *ngIf="quizDone==false; else elseBlock">
       <span>
-        {{quizService.actualQuestion.question}}
-        <hr>
-        <div  href="#" class="row" *ngFor = "let answer of quizService.actualQuestion.answers; let i = index">
-          <a class="nav-item hover-underline-animation"
-             href="#"
+        {{quizService.actualQuestionIndex+1}}. {{quizService.actualQuestion.question}}
+        <div class="row" *ngFor = "let answer of quizService.actualQuestion.answers; let i = index">
+          <a href="#a" class="nav-item hover-underline-animation"
              [ngClass]="{'selected-answer': quizService.numberToAscii(i+65) == quizService.selectedAnswer}"
              (click)="onClick(i)">
             {{quizService.numberToAscii(i+65)}}) {{answer}}
@@ -26,7 +22,6 @@
 
 
         </div>
-        <hr>
         <button (click) = "submitAnswer()" type="button" class="btn btn-primary">
             Submit
         </button>

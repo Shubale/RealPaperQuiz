@@ -14,24 +14,21 @@
           >Please enter a valid quiz title</span>
         </div>
         <div class="form-group">
-          <label for="author">Author</label>
+          <label>Author</label>
           <input
             class="form-control"
             formControlName="author"
-            id="author"
             type="text">
           <span
             *ngIf="!quizForm.get('author').valid && quizForm.get('author').touched"
           >Please enter a valid author name</span>
         </div>
         <h4>Questions</h4>
-
-    //lista z service
-          <div *ngFor="let questionControl of quizForm.get('questions')['controls'];
+          <div *ngFor="let questionControl of quizForm.get('questions')['question'];
           let i = index"
                class="container">
             <div class="row">
-            <div class="questionAdder questionAdder col-11 mr-1">
+            <div class="questionAdder col-11 mr-1">
 
               <div formArrayName="questions">
 

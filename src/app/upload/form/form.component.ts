@@ -10,12 +10,20 @@ import { QuizService } from "../../services/quiz.service";
 export class FormComponent implements OnInit {
   constructor(private formService: QuizService) { }
   quizForm: FormGroup;
-
   ngOnInit() {
     this.quizForm = new FormGroup({
       'title': new FormControl('title', Validators.required),
       'author' : new FormControl('author', Validators.required),
-      'questions' : new FormArray([new FormControl('xdd1')])
+      'questions' : new FormGroup({
+        'question' : new FormControl('question', Validators.required),
+        'correctAnswer' : new FormControl('correctAnswer', Validators.required),
+        'answers' : new FormArray([
+          new FormControl('answer1', Validators.required),
+          new FormControl('answer2', Validators.required),
+          new FormControl('answer3', Validators.required),
+          new FormControl('answer4', Validators.required)
+        ])
+      })
     });
   }
   //
@@ -27,7 +35,6 @@ export class FormComponent implements OnInit {
     });
     console.log(this.quizForm);
     console.log(this.formService.quizzes);
-    //console.log((this.quizForm.get('questions')).value.length);
   }
 
   onAddQuestion(){

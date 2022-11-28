@@ -4,12 +4,6 @@
       <h3 class="card-title">{{quiz.title}}</h3>
       <hr>
       <span>Author: {{quiz.author}}</span>
-      <hr>
-      <span *ngFor="let question of quiz.questions">
-              {{question.question}}
-        <hr>
-        <pre *ngFor="let answer of question.answers; let i = index">{{quizService.numberToAscii(i+65)}}) {{answer}}</pre>
-      </span>
     </div>
   </a>
 </div>
