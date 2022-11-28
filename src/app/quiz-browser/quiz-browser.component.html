@@ -1,19 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3" *ngFor="let quiz of getQuizzes()">
-      <a href="#" class="card">
-        <div class="card-body">
-          <h3 class="card-title">{{quiz.name}}</h3>
-          <hr>
-          <span>Author: {{quiz.author}}</span>
-          <hr>
-          <span *ngFor="let question of quiz.questions">
-            {{question.question}}
-            <pre *ngFor="let answer of question.answers">{{answer}}</pre>
-          </span>
-
-        </div>
-      </a>
-    </div>
+    <app-quiz-item class="col-md-3" *ngFor="let quiz of getQuizzes()"
+    [quiz] = "quiz"></app-quiz-item>
   </div>
 </div>

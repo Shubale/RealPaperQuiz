@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
-import { QuizService } from "../../quiz.service";
-import {Quiz} from "../../quiz.model";
+import { QuizService } from "../../services/quiz.service";
 
 @Component({
   selector: 'app-form',
@@ -21,13 +20,11 @@ export class FormComponent implements OnInit {
   }
   //
   onSubmit(){
-    let quiz: Quiz = new Quiz(
-      this.quizForm.value.author,
-      this.quizForm.value.name,
-      this.quizForm.value.arguments
-    )
-
-    this.formService.addQuiz(quiz);
+    this.formService.addQuiz({
+      title: this.quizForm.value.title,
+      author: this.quizForm.value.author,
+      questions: this.quizForm.value.questions
+    });
     console.log(this.quizForm);
     console.log(this.formService.quizzes);
     //console.log((this.quizForm.get('questions')).value.length);

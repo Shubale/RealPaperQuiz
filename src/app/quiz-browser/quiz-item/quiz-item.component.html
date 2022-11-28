@@ -1,0 +1,16 @@
+<div>
+  <a href="#" class="card">
+    <div class="card-body">
+      <h3 class="card-title">{{quiz.title}}</h3>
+      <hr>
+      <span>Author: {{quiz.author}}</span>
+      <hr>
+      <span *ngFor="let question of quiz.questions">
+              {{question.question}}
+        <pre *ngFor="let answer of question.answers">{{answer}}</pre>
+      </span>
+    </div>
+  </a>
+</div>
+bajojajo
+

@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from "@angular/forms";
 
 import { AppComponent } from './app.component';
-import {HeaderComponent} from "./Header/header.component";
+import {HeaderComponent} from "./header/header.component";
 import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { QuizBrowserComponent } from './quiz-browser/quiz-browser.component';
@@ -15,6 +15,7 @@ import { UploadComponent } from './upload/upload.component';
 import {BasicHighlightDirective} from "./basic-highlight.directive";
 import {BetterHighlightDirective} from "./better-highlight.directive";
 import { UnlessDirective } from './unless.directive';
+import { QuizItemComponent } from './quiz-browser/quiz-item/quiz-item.component';
 
 
 const appRoutes: Routes = [
@@ -24,7 +25,6 @@ const appRoutes: Routes = [
   { path: 'upload_quiz', component: UploadComponent }
 ];
 
-// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +38,8 @@ const appRoutes: Routes = [
     UploadComponent,
     BasicHighlightDirective,
     BetterHighlightDirective,
-    UnlessDirective
+    UnlessDirective,
+    QuizItemComponent
   ],
   imports: [
     BrowserModule,
