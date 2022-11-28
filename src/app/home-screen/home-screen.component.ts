@@ -14,4 +14,8 @@ export class HomeScreenComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onClick(i: number) {
+    this.quizService.selectedAnswer = this.quizService.actualQuestion.answers[i];
+    console.log("onclick działa")
+  }
 }

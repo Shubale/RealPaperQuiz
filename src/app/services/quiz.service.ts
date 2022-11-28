@@ -39,7 +39,11 @@ export class QuizService {
     }
   ];
   actualQuiz: Quiz = this.quizzes[0];
-  actualQuestion: number = 0;
+  actualQuestion: Question = this.actualQuiz.questions[0];
+  selectedAnswer: string;
+  numberToAscii(num: number){
+    return String.fromCodePoint(num);
+  }
   addQuiz(quiz: Quiz){
     this.quizzes.push(quiz);
     console.log(this.quizzes);

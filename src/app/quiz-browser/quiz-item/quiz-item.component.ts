@@ -12,12 +12,12 @@ export class QuizItemComponent implements OnInit {
   @Input()
   quiz: Quiz;
 
-  constructor(private formService: QuizService) {
+  constructor(public quizService: QuizService) {
   }
 
   getQuizzes(){
-    console.log(this.formService.quizzes);
-    return this.formService.quizzes;
+    console.log(this.quizService.quizzes);
+    return this.quizService.quizzes;
   }
 
   ngOnInit(): void {

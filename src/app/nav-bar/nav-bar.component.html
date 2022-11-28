@@ -4,16 +4,16 @@
   <!-- Links -->
   <ul class="navbar-nav">
     <li class="nav-item hover-underline-animation">
-      <a class="nav-link active" routerLink="/">Home</a>
+      <a (click)="onClick(0)" [ngClass] = "{'active' : currentTab == 0}" class="nav-link" routerLink="/">Home</a>
     </li>
     <li class="nav-item hover-underline-animation">
-      <a class="nav-link" routerLink="/browse_quizzes">Browse Quizzes</a>
+      <a (click)="onClick(1)" [ngClass] = "{'active' : currentTab == 1}" class="nav-link" routerLink="/browse_quizzes">Browse Quizzes</a>
     </li>
     <li class="nav-item hover-underline-animation">
-      <a class="nav-link" routerLink="/your_quizzes">Your Quizzes</a>
+      <a (click)="onClick(2)" [ngClass] = "{'active' : currentTab == 2}" class="nav-link" routerLink="/your_quizzes">Your Quizzes</a>
     </li>
     <li class="nav-item hover-underline-animation">
-      <a class="nav-link" routerLink="/upload_quiz">Upload Quiz</a>
+      <a (click)="onClick(3)" [ngClass] = "{'active' : currentTab == 3}" class="nav-link" routerLink="/upload_quiz">Upload Quiz</a>
     </li>
   </ul>
 

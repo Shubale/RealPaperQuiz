@@ -7,10 +7,10 @@
       <hr>
       <span *ngFor="let question of quiz.questions">
               {{question.question}}
-        <pre *ngFor="let answer of question.answers">{{answer}}</pre>
+        <hr>
+        <pre *ngFor="let answer of question.answers; let i = index">{{quizService.numberToAscii(i+65)}}) {{answer}}</pre>
       </span>
     </div>
   </a>
 </div>
-bajojajo
 

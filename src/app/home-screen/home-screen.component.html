@@ -4,16 +4,21 @@
       <span class="quiz-name">
         {{quizService.actualQuiz.title}}
       </span>
-
-      <pre>
+      <hr>
+      <span>
         {{quizService.actualQuiz.author}}
-      </pre>
-      <pre *ngFor = "let question of quizService.actualQuiz.questions">
-        {{question.question}}
-        <pre *ngFor = "let answer of question.answers">
-          {{answer}}
-        </pre>
-      </pre>
+      </span>
+      <hr>
+      <span>
+        {{quizService.actualQuestion.question}}
+        <hr>
+        <div  href="#" class="row" *ngFor = "let answer of quizService.actualQuestion.answers; let i = index">
+          <a href="#" [ngClass]="{'selected-answer': answer == quizService.selectedAnswer}" (click)="onClick(i)">
+            {{quizService.numberToAscii(i+65)}}) {{answer}}
+          </a>
+
+        </div>
+      </span>
     </div>
   </div>
 </div>
