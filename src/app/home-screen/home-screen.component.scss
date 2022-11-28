@@ -16,14 +16,13 @@ a {
 }
 
 .selected-answer {
- color: darkgreen;
+  color: #04b012;
   font-weight: bold;
 }
 
 .hover-underline-animation {
   display: inline-block;
   position: relative;
-  color: #0087ca;
 }
 
 .hover-underline-animation::after {
@@ -42,4 +41,8 @@ a {
 .hover-underline-animation:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+.btn {
+  margin-bottom: 10px;
 }

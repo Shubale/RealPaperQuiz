@@ -10,18 +10,18 @@ export class QuizService {
     [
       {
         question: "Which country's capital is Riga?",
-        correctAnswer: "a",
-        answers: ["Estonia", "Poland", "France", "Bulgaria"]
+        correctAnswer: "A",
+        answers: ["Latvia", "Poland", "France", "Bulgaria"]
       },{
-        question: "Howmany neighbours does France have?",
-        correctAnswer: "d",
+        question: "How many neighbours does France have?",
+        correctAnswer: "D",
         answers: ["7", "8", "9", "10"]
       }
     ],
     [
       {
         question: "Who died in 1444 in the battle of Varna?",
-        correctAnswer: "c",
+        correctAnswer: "C",
         answers: ["Sultan Mahiid II", "King Louis XVII", "King Władysław III", "Emperor Zhu Qiyu"]
       }
     ]
@@ -39,7 +39,9 @@ export class QuizService {
     }
   ];
   actualQuiz: Quiz = this.quizzes[0];
+  actualQuizIndex = 0;
   actualQuestion: Question = this.actualQuiz.questions[0];
+  actualQuestionIndex = 0;
   selectedAnswer: string;
   numberToAscii(num: number){
     return String.fromCodePoint(num);

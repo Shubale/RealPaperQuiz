@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { QuizService } from "../../services/quiz.service";
 import {Quiz} from "../../models/quiz.model";
 
@@ -7,10 +7,12 @@ import {Quiz} from "../../models/quiz.model";
   templateUrl: './quiz-item.component.html',
   styleUrls: ['./quiz-item.component.scss']
 })
-export class QuizItemComponent implements OnInit {
+export class QuizItemComponent {
 
   @Input()
   quiz: Quiz;
+  @Input()
+  quizIndex: number;
 
   constructor(public quizService: QuizService) {
   }
@@ -19,8 +21,9 @@ export class QuizItemComponent implements OnInit {
     console.log(this.quizService.quizzes);
     return this.quizService.quizzes;
   }
-
-  ngOnInit(): void {
+  selectQuiz(i: number){
+    this.quizService.actualQuiz = this.quizService.quizzes[i];
+    this.quizService.actualQuestion = this.quizService.actualQuiz.questions[0];
+    console.log(this.quizService.actualQuiz);
   }
-
 }

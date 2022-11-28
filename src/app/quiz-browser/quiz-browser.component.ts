@@ -10,7 +10,6 @@ export class QuizBrowserComponent{
   constructor(private formService: QuizService) {
   }
   getQuizzes(){
-    console.log(this.formService.quizzes);
     return this.formService.quizzes;
   }
 }

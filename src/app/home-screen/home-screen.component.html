@@ -1,4 +1,7 @@
 <div class="container">
+  <div class="score">
+    {{correctAnswers/quizService.actualQuiz.questions.length*100}}%
+  </div>
   <div class="row">
     <div class="col-12 quiz-container">
       <span class="quiz-name">
@@ -9,16 +12,29 @@
         {{quizService.actualQuiz.author}}
       </span>
       <hr>
+      <div *ngIf="quizDone==false; else elseBlock">
       <span>
         {{quizService.actualQuestion.question}}
         <hr>
         <div  href="#" class="row" *ngFor = "let answer of quizService.actualQuestion.answers; let i = index">
-          <a href="#" [ngClass]="{'selected-answer': answer == quizService.selectedAnswer}" (click)="onClick(i)">
+          <a class="nav-item hover-underline-animation"
+             href="#"
+             [ngClass]="{'selected-answer': quizService.numberToAscii(i+65) == quizService.selectedAnswer}"
+             (click)="onClick(i)">
             {{quizService.numberToAscii(i+65)}}) {{answer}}
           </a>
 
+
         </div>
+        <hr>
+        <button (click) = "submitAnswer()" type="button" class="btn btn-primary">
+            Submit
+        </button>
       </span>
+      </div>
+      <ng-template #elseBlock>
+        Quiz completed, you've scored {{correctAnswers}} out of {{quizService.actualQuiz.questions.length}}
+      </ng-template>
     </div>
   </div>
 </div>
