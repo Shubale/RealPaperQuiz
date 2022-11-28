@@ -14,16 +14,19 @@ export class FormComponent implements OnInit {
     this.quizForm = new FormGroup({
       'title': new FormControl('title', Validators.required),
       'author' : new FormControl('author', Validators.required),
-      'questions' : new FormGroup({
-        'question' : new FormControl('question', Validators.required),
-        'correctAnswer' : new FormControl('correctAnswer', Validators.required),
-        'answers' : new FormArray([
-          new FormControl('answer1', Validators.required),
-          new FormControl('answer2', Validators.required),
-          new FormControl('answer3', Validators.required),
-          new FormControl('answer4', Validators.required)
-        ])
-      })
+      'questions' : new FormArray([
+            new FormGroup({
+            'question' : new FormControl('question', Validators.required),
+            'correctAnswer' : new FormControl('correctAnswer', Validators.required),
+            'answers' : new FormArray([
+              new FormControl('answer1', Validators.required),
+              new FormControl('answer2', Validators.required),
+              new FormControl('answer3', Validators.required),
+              new FormControl('answer4', Validators.required)
+            ])
+          })
+      ]),
+
     });
   }
   //
