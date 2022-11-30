@@ -16,6 +16,7 @@ import {BasicHighlightDirective} from "./basic-highlight.directive";
 import {BetterHighlightDirective} from "./better-highlight.directive";
 import { UnlessDirective } from './unless.directive';
 import { QuizItemComponent } from './quiz-browser/quiz-item/quiz-item.component';
+import { QuizEditComponent } from './quiz-browser/quiz-edit/quiz-edit.component';
 
 
 const appRoutes: Routes = [
@@ -23,7 +24,7 @@ const appRoutes: Routes = [
   { path: 'browse_quizzes', component: QuizBrowserComponent },
   { path: 'your_quizzes', component: QuizBrowserComponent },
   { path: 'upload_quiz', component: UploadComponent },
-  { path: 'edit_quiz/:id', component: UploadComponent }
+  { path: 'edit_quiz/:id', component: QuizEditComponent }
 ];
 
 @NgModule({
@@ -40,7 +41,8 @@ const appRoutes: Routes = [
     BasicHighlightDirective,
     BetterHighlightDirective,
     UnlessDirective,
-    QuizItemComponent
+    QuizItemComponent,
+    QuizEditComponent
   ],
   imports: [
     BrowserModule,

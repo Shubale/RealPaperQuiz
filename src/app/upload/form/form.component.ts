@@ -38,6 +38,7 @@ export class FormComponent implements OnInit {
   };
   onSubmit(){
     this.formService.addQuiz({
+      id: this.formService.generateId(),
       title: this.quizForm.value.title,
       author: this.quizForm.value.author,
       questions: this.quizForm.value.questions

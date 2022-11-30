@@ -28,11 +28,13 @@ export class QuizService {
   ]
   quizzes: Quiz[] = [
     {
+      id: 0,
       title: 'Countries of Europe',
       author: 'Arek',
       questions: this.questionSets[0]
     },
     {
+      id: 1,
       title: 'History vol. 3',
       author: 'Bartek',
       questions: this.questionSets[1]
@@ -43,10 +45,12 @@ export class QuizService {
   actualQuestion: Question;
   actualQuestionIndex: number;
   selectedAnswer: string;
+  quizzesCreated: number = 2;
   numberToAscii(num: number){
     return String.fromCodePoint(num);
   }
   addQuiz(quiz: Quiz){
+    this.quizzesCreated++;
     this.quizzes.push(quiz);
     console.log(this.quizzes);
   }
@@ -55,5 +59,9 @@ export class QuizService {
     this.quizzes.forEach((value, index)=>{
       if(value==element) this.quizzes.splice(index, 1);
     });
+  }
+
+  generateId() {
+    return this.quizzesCreated;
   }
 }
