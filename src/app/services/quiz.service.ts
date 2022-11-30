@@ -38,10 +38,10 @@ export class QuizService {
       questions: this.questionSets[1]
     }
   ];
-  actualQuiz: Quiz = this.quizzes[0];
-  actualQuizIndex = 0;
-  actualQuestion: Question = this.actualQuiz.questions[0];
-  actualQuestionIndex = 0;
+  actualQuiz: Quiz;
+  actualQuizIndex: number;
+  actualQuestion: Question;
+  actualQuestionIndex: number;
   selectedAnswer: string;
   numberToAscii(num: number){
     return String.fromCodePoint(num);
@@ -49,5 +49,11 @@ export class QuizService {
   addQuiz(quiz: Quiz){
     this.quizzes.push(quiz);
     console.log(this.quizzes);
+  }
+
+  delete(element: Quiz) {
+    this.quizzes.forEach((value, index)=>{
+      if(value==element) this.quizzes.splice(index, 1);
+    });
   }
 }

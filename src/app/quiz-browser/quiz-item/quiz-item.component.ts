@@ -21,9 +21,24 @@ export class QuizItemComponent {
     console.log(this.quizService.quizzes);
     return this.quizService.quizzes;
   }
-  selectQuiz(i: number){
-    this.quizService.actualQuiz = this.quizService.quizzes[i];
-    this.quizService.actualQuestion = this.quizService.actualQuiz.questions[0];
+  playQuiz(){
+    this.quizService.actualQuiz = this.quiz;
+    this.quizService.actualQuizIndex = this.quizIndex;
+    this.quizService.actualQuestion = this.quiz.questions[0];
+    this.quizService.actualQuestionIndex = 0;
     console.log(this.quizService.actualQuiz);
+  }
+
+  deleteQuiz() {
+    this.quizService.delete(this.quiz);
+    this.quizService.actualQuiz = null;
+    this.quizService.actualQuizIndex = null;
+    this.quizService.actualQuestion = null;
+    this.quizService.actualQuestionIndex = null;
+  }
+
+
+  editQuiz() {
+
   }
 }

@@ -22,7 +22,8 @@ const appRoutes: Routes = [
   { path: '', component: HomeScreenComponent },
   { path: 'browse_quizzes', component: QuizBrowserComponent },
   { path: 'your_quizzes', component: QuizBrowserComponent },
-  { path: 'upload_quiz', component: UploadComponent }
+  { path: 'upload_quiz', component: UploadComponent },
+  { path: 'edit_quiz/:id', component: UploadComponent }
 ];
 
 @NgModule({

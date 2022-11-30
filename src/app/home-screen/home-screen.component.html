@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="quizService.actualQuiz!=null; else quizDoesntExistBlock" class="container">
   <div class="row">
     <div class="score col-2">
       Score: {{correctAnswers/quizService.actualQuiz.questions.length*100}}%
@@ -6,7 +6,7 @@
   </div>
 
   <div class="row">
-    <div class="col-12 quiz-container">
+    <div  class="col-12 quiz-container">
       <div class="quiz-name">
         {{quizService.actualQuiz.title}} by {{quizService.actualQuiz.author}}
       </div>
@@ -33,3 +33,6 @@
     </div>
   </div>
 </div>
+<ng-template #quizDoesntExistBlock>
+  Select or create quiz to play!
+</ng-template>

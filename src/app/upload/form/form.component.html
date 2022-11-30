@@ -24,20 +24,17 @@
           >Please enter a valid author name</span>
         </div>
         <h4>Questions</h4>
-          <div *ngFor="let questionControl of quizForm.get('questions')['question'];
-          let i = index"
-
-               class="container">
-            <div class="row">
-            <div class="questionAdder col-11 mr-1">
+          <div class="container">
+            <div  class="row" *ngFor="let question of quizForm.controls.questions.value; let i = index; trackBy: trackByFn">
+            <div class="questionAdder col-11 mr-1" >
 
               <div formArrayName="questions">
 
-                <div class="form-group">
+                <div class="form-group" [formGroupName]="i">
 
-                  <input [formControlName]="i" class="form-control" placeholder="Question" type="text">
+                  <input class="form-control" formControlName="question" type="text">
 
-                  <select class="custom-select">
+                  <select class="custom-select form-control" formControlName="correctAnswer">
                     <option selected>Choose correct answer</option>
                     <option value="A">A</option>
                     <option value="B">B</option>
@@ -45,31 +42,35 @@
                     <option value="D">D</option>
                   </select>
                   Answers
-                  <!--PYTANIA-->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">A)</span>
+                  <!--odpowiedzi-->
+
+                  <div formArrayName="answers">
+                    <div  class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">A)</span>
+                      </div>
+                      <input class="form-control" [formControlName]="0" type="text">
                     </div>
-                    <input [formControlName]="i" class="form-control" type="text">
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">B)</span>
+                    <div  class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">B)</span>
+                      </div>
+                      <input class="form-control" [formControlName]="1" type="text">
                     </div>
-                    <input [formControlName]="i" class="form-control" type="text">
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">C)</span>
+                    <div  class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">C)</span>
+                      </div>
+                      <input class="form-control" [formControlName]="2" type="text">
                     </div>
-                    <input [formControlName]="i" class="form-control" type="text">
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">D)</span>
+                    <div  class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">D)</span>
+                      </div>
+                      <input class="form-control" [formControlName]="3" type="text">
                     </div>
-                    <input [formControlName]="i" class="form-control" type="text">
                   </div>
+
                   <!--PYTANIA-->
 
                 </div>
@@ -83,7 +84,7 @@
                 <div (click)="onAddQuestion()" class="btn add-question rounded col-12 square" type="button">+</div>
               </div>
               <div class="row">
-                <div (click)="onDeleteQuestionAtPos(i)" class="btn btn-info delete-at-pos col-12">X</div>
+                <div  class="btn btn-info delete-at-pos col-12">X</div>
               </div>
 
             </div>

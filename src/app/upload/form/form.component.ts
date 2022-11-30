@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormControl, FormGroup, FormRecord, Validators} from "@angular/forms";
 import { QuizService } from "../../services/quiz.service";
 
 @Component({
@@ -11,25 +11,28 @@ export class FormComponent implements OnInit {
   constructor(private formService: QuizService) { }
   quizForm: FormGroup;
   ngOnInit() {
-    this.quizForm = new FormGroup({
+    this.quizForm = new FormRecord({
       'title': new FormControl('title', Validators.required),
       'author' : new FormControl('author', Validators.required),
       'questions' : new FormArray([
-            new FormGroup({
-            'question' : new FormControl('question', Validators.required),
-            'correctAnswer' : new FormControl('correctAnswer', Validators.required),
+            new FormRecord({
+            'question' : new FormControl('Question 1', Validators.required),
+            'correctAnswer' : new FormControl('Choose correct answer', Validators.required),
             'answers' : new FormArray([
-              new FormControl('answer1', Validators.required),
-              new FormControl('answer2', Validators.required),
-              new FormControl('answer3', Validators.required),
-              new FormControl('answer4', Validators.required)
+              new FormControl(null, Validators.required),
+              new FormControl(null, Validators.required),
+              new FormControl(null, Validators.required),
+              new FormControl(null, Validators.required)
             ])
           })
       ]),
-
     });
+    console.log(this.quizForm.controls.questions.value);
   }
   //
+  trackByFn(index){
+    return index;
+  };
   onSubmit(){
     this.formService.addQuiz({
       title: this.quizForm.value.title,
@@ -38,10 +41,20 @@ export class FormComponent implements OnInit {
     });
     console.log(this.quizForm);
     console.log(this.formService.quizzes);
+    console.log(this.quizForm.get('questions')['question'])
   }
 
   onAddQuestion(){
-    const control = new FormControl(null, Validators.required);
+    const control = new FormRecord({
+        'question' : new FormControl(null, Validators.required),
+        'correctAnswer' : new FormControl('Choose correct answer', Validators.required),
+        'answers' : new FormArray([
+          new FormControl(null, Validators.required),
+          new FormControl(null, Validators.required),
+          new FormControl(null, Validators.required),
+          new FormControl(null, Validators.required)
+        ])
+      });
     (<FormArray>this.quizForm.get('questions')).push(control);
   }
 
