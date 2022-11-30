@@ -25,13 +25,14 @@
         </div>
         <h4>Questions</h4>
           <div class="container">
-            <div  class="row" *ngFor="let question of quizForm.controls.questions.value; let i = index; trackBy: trackByFn">
+            <div formArrayName="questions">
+            <div  class="row" *ngFor="let question of quizForm.controls.questions.value; let i = index; trackBy: trackElement" >
             <div class="questionAdder col-11 mr-1" >
 
-              <div formArrayName="questions">
+
 
                 <div class="form-group" [formGroupName]="i">
-
+                      id:{{i}}
                   <input class="form-control" formControlName="question" type="text">
 
                   <select class="custom-select form-control" formControlName="correctAnswer">
@@ -73,7 +74,7 @@
 
                   <!--PYTANIA-->
 
-                </div>
+
 
               </div>
 
@@ -84,12 +85,12 @@
                 <div (click)="onAddQuestion()" class="btn add-question rounded col-12 square" type="button">+</div>
               </div>
               <div class="row">
-                <div  class="btn btn-info delete-at-pos col-12">X</div>
+                <div (click)="onDeleteQuestionAtPos(i,question)" class="btn btn-info delete-at-pos col-12">X</div>
               </div>
 
             </div>
           </div>
-
+            </div>
         </div>
         <button type="submit" class = "btn btn-primary">Submit</button>
       </form>

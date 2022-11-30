@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, FormRecord, Validators} from "@angular/forms";
 import { QuizService } from "../../services/quiz.service";
 
@@ -8,7 +8,7 @@ import { QuizService } from "../../services/quiz.service";
   styleUrls: ['./form.component.scss'],
 })
 export class FormComponent implements OnInit {
-  constructor(private formService: QuizService) { }
+  constructor(private formService: QuizService, private cd:ChangeDetectorRef) { }
   quizForm: FormGroup;
   ngOnInit() {
     this.quizForm = new FormRecord({
@@ -30,7 +30,10 @@ export class FormComponent implements OnInit {
     console.log(this.quizForm.controls.questions.value);
   }
   //
-  trackByFn(index){
+  trackElement(index: any, item: any){
+    return item.id;
+  }
+  trackByFn(index, item){
     return index;
   };
   onSubmit(){
@@ -58,10 +61,15 @@ export class FormComponent implements OnInit {
     (<FormArray>this.quizForm.get('questions')).push(control);
   }
 
-  onDeleteQuestionAtPos(pos: number){
+  onDeleteQuestionAtPos(pos: number, quetion:any){
+    console.log('q',quetion)
     if(this.quizForm.get('questions').value.length>1) {
-      (<FormArray>this.quizForm.get('questions')).removeAt((pos));
+      //const temp = this.quizForm.controls.questions.value.filter((o,i)=>i!=pos);
+      //this.quizForm.controls.questions.setValue(temp);
+       (<FormArray>this.quizForm.get('questions')).removeAt((pos));
     }
+    console.log(this.quizForm.controls.questions.value);
+    this.cd.markForCheck();
   }
 
 }
