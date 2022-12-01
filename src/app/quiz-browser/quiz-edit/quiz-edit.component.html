@@ -1,6 +1,83 @@
-{{quiz.title}}
-{{quiz.author}}
-{{quiz.id}}
-<form (submit)="onSubmit()">
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <form (submit)="onSubmit()">
+        <div class="form-group">
+          <label for="title">Quiz name</label>
+          <input class="form-control"
+                 id="title"
+                 type="text"
+                 value="{{quiz.title}}"
+                 [(ngModel)]="quiz.title"
+                 [ngModelOptions]="{standalone: true}">
+        </div>
+        <label for="author">Author</label>
+        <div class="form-group">
+          <input class="form-control"
+                 id="author"
+                 type="text"
+                 value="{{quiz.author}}"
+                 [(ngModel)]="quiz.author"
+                 [ngModelOptions]="{standalone: true}">
+        </div>
 
-</form>
+        <h4>Questions</h4>
+        <div class="container">
+          <div>
+            <div *ngFor="let question of quiz.questions" class="row">
+              <div class="questionAdder col-11 mr-1">
+                <div class="form-group">
+                  <label for="question">Question</label>
+                  <input class="form-control"
+                         id="question"
+                         type="text"
+                         value="{{question.question}}"
+                         [(ngModel)]="question.question"
+                         [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="form-group">
+                  <label for="correctAnswer">Correct Answer</label>
+                  <select class="custom-select form-control"
+                          id="correctAnswer"
+                          [(ngModel)]="question.correctAnswer"
+                          [ngModelOptions]="{standalone: true}">
+                    <option [attr.selected]="question.correctAnswer==='A' ? true: null" value="A">A</option>
+                    <option [attr.selected]="question.correctAnswer==='B' ? true: null" value="B">B</option>
+                    <option [attr.selected]="question.correctAnswer==='C' ? true: null" value="C">C</option>
+                    <option [attr.selected]="question.correctAnswer==='D' ? true: null" value="D">D</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  Answers
+                  <!--odpowiedzi-->
+                  <div *ngFor="let answer of question.answers; let i = index; trackBy: identify" class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">{{quizService.numberToAscii(i + 65)}})</span>
+                    </div>
+                    <label for="answer"></label>
+                    <input class="form-control"
+                           type="text"
+                           id="answer"
+                           value="{{answer}}"
+                           [(ngModel)]="question.answers[i]"
+                           [ngModelOptions]="{standalone: true}"
+                           >
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="row mb-1">
+                  <div (click)="addQuestion()" class="btn add-question rounded col-12 square" type="button">+</div>
+                </div>
+                <div class="row">
+                  <div (click)="deleteQuestion(question)" class="btn btn-info delete-at-pos col-12">X</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

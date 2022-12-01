@@ -26,11 +26,8 @@
         <h4>Questions</h4>
           <div class="container">
             <div formArrayName="questions">
-            <div  class="row" *ngFor="let question of quizForm.controls.questions.value; let i = index; trackBy: trackElement" >
+            <div  class="row" *ngFor="let question of quizForm.controls.questions.value; let i = index; trackBy: identify" >
             <div class="questionAdder col-11 mr-1" >
-
-
-
                 <div class="form-group" [formGroupName]="i">
                   <input class="form-control" formControlName="question" type="text">
 

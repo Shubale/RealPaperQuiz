@@ -7,7 +7,7 @@
       <div (click)="playQuiz()" routerLink="/" class="col-4 btn btn-success">
         &#9654;
       </div>
-      <div (click)="editQuiz()" class="col-4 btn btn-primary">
+      <div (click)="editQuiz()" routerLink="/edit_quiz/{{quiz.id}}" class="col-4 btn btn-primary">
         🛠
       </div>
       <div (click)="deleteQuiz()"  class="col-4 btn btn-danger">

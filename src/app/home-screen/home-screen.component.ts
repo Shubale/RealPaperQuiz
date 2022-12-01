@@ -10,6 +10,7 @@ import { QuizService } from "../services/quiz.service";
 export class HomeScreenComponent implements OnInit {
 
   correctAnswers:number = 0;
+  answeredQuestions: number = 0;
   quizDone: boolean = false;
   constructor(public quizService: QuizService) { }
 
@@ -19,11 +20,16 @@ export class HomeScreenComponent implements OnInit {
   onClick(i: number) {
     this.quizService.selectedAnswer = String.fromCodePoint(i+65);
   }
-
+  round(num: number){
+    if(isNaN(num))
+      return 0;
+    return Math.round(num);
+  }
   submitAnswer() {
     if(this.quizService.selectedAnswer==null){
       return;
     }
+    this.answeredQuestions++;
     if(this.quizService.selectedAnswer==this.quizService.actualQuestion.correctAnswer){
       this.correctAnswers++;
     }

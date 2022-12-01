@@ -1,7 +1,7 @@
 <div *ngIf="quizService.actualQuiz!=null; else quizDoesntExistBlock" class="container">
   <div class="row">
     <div class="score col-2">
-      Score: {{correctAnswers/quizService.actualQuiz.questions.length*100}}%
+      Score: {{round(correctAnswers/answeredQuestions*100)}}%
     </div>
   </div>
 

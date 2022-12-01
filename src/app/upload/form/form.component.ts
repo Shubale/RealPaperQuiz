@@ -30,6 +30,9 @@ export class FormComponent implements OnInit {
     console.log(this.quizForm.controls.questions.value);
   }
   //
+  identify(index, item){
+   return item.id;
+  }
   trackElement(index: any, item: any){
     return item.id;
   }
